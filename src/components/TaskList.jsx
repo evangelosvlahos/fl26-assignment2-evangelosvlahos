@@ -3,7 +3,7 @@ import TaskItem from './TaskItem'
 
 function TaskList({ tasks, onToggleTask, onRemoveTask }) {
   if (tasks.length === 0) {
-    return <p className="no-tasks"> No tasks available.</p>;
+    return <p className="no-tasks"> No tasks in the list.</p>;
   }
   return (
     <ul className="task-list">

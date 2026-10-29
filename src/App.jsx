@@ -9,6 +9,7 @@ import { useState } from 'react'
 import TaskList from './components/TaskList'
 import TaskHeader from './components/TaskHeader'
 import TaskForm from './components/TaskForm'
+import TaskFilter from './components/TaskFilter'
 
 import inboxIcon from './assets/inbox_icon.png'
 import calendarIcon from './assets/calendar_icon.png'
@@ -24,6 +25,14 @@ function App() {
     { id: 5, text: 'Buy a gift card for Dad', completed: false },
      */
   ]);
+
+  const [filter, setFilter] = useState('all'); // all, active, completed
+  // Derived state - computed from existing state
+  const filteredTasks = tasks.filter(task => {
+    if (filter === 'active') return !task.completed;
+    if (filter === 'completed') return task.completed;
+    return true; // 'all'
+  });
 
   const handleAddTask = (taskName) => {
     const maxId = tasks.length > 0 ? Math.max(...tasks.map((task) => task.id)) : 0;
@@ -69,7 +78,8 @@ function App() {
 
         <main className="main-content">
             <h1>Inbox</h1>
-           <TaskList tasks={tasks} onToggleTask={handleToggleTask} onRemoveTask={handleRemoveTask} /> 
+            <TaskFilter filter={filter} setFilter={setFilter} />
+           <TaskList tasks={filteredTasks} onToggleTask={handleToggleTask} onRemoveTask={handleRemoveTask} /> 
            <TaskForm onAddTask={handleAddTask} />
         </main>
     </div>
