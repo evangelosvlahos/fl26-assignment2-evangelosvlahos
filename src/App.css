@@ -124,12 +124,12 @@ img {
 
 .filter {
     padding: 6px 40px;
-    cursor: pointer;
 }
 
 .btn-filter {
     background-color: white;
     border: none;
+    cursor: pointer;
     box-shadow: none;
     margin-left: 3px;
     margin-right: 3px;
@@ -140,6 +140,7 @@ img {
     background-color: #dc4c3e;
     color: white;
     border: none;
+    cursor: pointer;
     box-shadow: none;
     margin-left: 3px;
     margin-right: 3px;
@@ -223,7 +224,7 @@ img {
 
 
 /* ========== RESPONSIVE DESIGN ========== */
-@media (max-width: 720px) {
+@media (max-width: 480px) {
  
     .container {
         flex-direction: column;

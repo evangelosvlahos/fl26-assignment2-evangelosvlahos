@@ -7,8 +7,12 @@ function TaskForm({ onAddTask }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (taskName.trim()) {
+      // add the task to the list
       onAddTask(taskName.trim());
+      // clear the name
       setTaskName('');
+      // disable the button until the user types a new task
+      setBtnDisabled(true);
     }
   };
 
@@ -22,7 +26,7 @@ function TaskForm({ onAddTask }) {
     <form className="task-form" onSubmit={handleSubmit}>
       <input onChange={handleInputChange} 
       type="text" name="taskName" placeholder="Enter a new task" value={taskName} />
-       <button type="submit" disabled={btnDisabled} aria-label={`Add`}>
+       <button type="submit" disabled={btnDisabled}>
         Add
       </button>
     </form>
